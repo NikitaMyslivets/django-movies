@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 
-from .models import Movie
+from .models import Movie, Category
 from django.views.generic.base import View
 from .forms import ReviewForm
 
@@ -10,7 +10,6 @@ class MoviesView(ListView):
     # Список фильмов
     model = Movie
     queryset = Movie.objects.filter(draft=False)
-    template_name = 'movies/movies.html'
 
 
 class MovieDetailView(DetailView):
