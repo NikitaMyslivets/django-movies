@@ -24,7 +24,14 @@
                                 {% endfor %}
                             </ul>
                         </li>
-                        <li><a href="contact.html">Вход</a></li>
+                        <li>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'account_logout' %}">Выход</a>
+                            {% else %}
+                                <a href="{% url 'account_login' %}">Вход</a>
+                                <a href="{% url 'account_signup' %}">Регистрация</a>
+                            {% endif %}
+                        </li>
                         <li>
                     <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                         <input name="next" type="hidden" value="{{ redirect_to }}">
